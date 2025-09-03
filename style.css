@@ -1,0 +1,224 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+/* Page container (light mode default) */
+.page {
+    background: #f9f9f9;
+    color: #333;
+    transition: background 0.3s, color 0.3s;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #333;
+    padding: 10px;
+    text-align: center;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+header a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.home-container {
+    display: flex;
+    align-items: center;
+    max-width: 1000px;
+    width: 100%;
+    gap: 40px;
+    padding: 20px;
+}
+
+.home-left img {
+    width: 300px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.home-right {
+    flex: 1;
+}
+
+.home-right h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+body.dark-mode .about-box {
+    background: #222;
+    color: #eee;
+}
+
+body.dark-mode .about-box i {
+    color: #ffcc00;
+}
+
+section {
+    min-height: 100vh;
+    padding: 80px 20px 20px;
+}
+
+#dark-toggle {
+    display: none;
+}
+
+.about, .contact {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+.about-box {
+    background: #e0e0e0;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-box i {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 20px;
+}
+
+.contact-box {
+    background: #e0e0e0;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s background 0.3s;
+}
+
+.contact-box:hover {
+    transform: translateY(-5px);
+    background: #d0d0d0;
+}
+
+.contact-box i {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.contact-box a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: #333;
+    color: white;
+    position: relative;
+    width: 100%;
+}
+
+label[for="dark-toggle"] {
+    cursor: pointer;
+    color: white;
+    background: #555;
+    padding: 5px 10px;
+    border-radius: 5px; 
+    font-size: 14px;
+    user-select: none;
+}
+
+#dark-toggle:checked ~ .page {
+    background: #121212;
+    color: #e0e0e0;
+}
+
+#dark-toggle:checked ~ .page header {
+    background: #222;
+}
+
+#dark-toggle:checked ~ .page header a {
+    color: #eee;
+}
+
+#dark-toggle:checked ~ .page label[for="dark-toggle"] {
+    background: #ddd;
+    color: #333;
+}
+
+#dark-toggle:checked ~ .page .about-box {
+    background: #1e1e1e;
+    color: #e0e0e0;
+}
+
+#dark-toggle:checked ~ .page .about-box:hover {
+    background: #2a2a2a;
+}
+
+#dark-toggle:checked ~ .page .about-box i {
+    color: #ffcc00;
+}
+
+#dark-toggle:checked ~ .page .contact-box {
+    background: #1e1e1e;
+    color: #e0e0e0;
+}
+
+#dark-toggle:checked ~ .page .contact-box:hover {
+    background: #2a2a2a;
+}
+
+#dark-toggle:checked ~ .page .contact-box i {
+    color: #ffcc00;
+}
+
+#dark-toggle:checked ~ .page .contact-box a {
+    color: #ffcc00;
+}
