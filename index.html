@@ -40,30 +40,31 @@
             <div class="about-grid">
                 <div class="about-box">
                     <i class="fa-solid fa-gamepad"></i>
-                    <h3>Gaming</h3>    
+                    <h3 class="editable">Gaming</h3>    
                 </div>
                 <div class="about-box">
                     <i class="fa-solid fa-code"></i>
-                    <h3>Programming</h3>
+                    <h3 class="editable">Programming</h3>
                 </div>
                 <div class="about-box">
                     <i class="fa-solid fa-puzzle-piece"></i>
-                    <h3>Problem Solving</h3>
+                    <h3 class="editable">Problem Solving</h3>
                 </div>
                 <div class="about-box">
                     <i class="fa-solid fa-database"></i>
-                    <h3>Database Management</h3>
+                    <h3 class="editable">Database Management</h3>
                 </div>
                 <div class="about-box">
                     <i class="fa-solid fa-shield-halved"></i>
-                    <h3>Cybersecurity</h3>
+                    <h3 class="editable">Cybersecurity</h3>
                 </div>
                 <div class="about-box">
                     <i class="fa-solid fa-people-group"></i>
-                    <h3>Teamwork</h3>
+                    <h3 class="editable">Teamwork</h3>
                 </div>
             </div>
 
+            <button id="edit-about">Edit</button>
         </section>
 
         <section id="contact" class="contact">
@@ -95,5 +96,29 @@
             <h1>© 2025</h1>
         </footer>
     </div>
+
+    <script>
+        const editBtn = document.getElementById("edit-about");
+        const editableTexts = document.querySelectorAll(".editable");
+        let editing = false;
+
+        editBtn.addEventListener("click", () => {
+            if (!editing) {
+                editableTexts.forEach(text => {
+                    text.contentEditable = "true";
+                    text.style.border = "1px dashed #999";
+                });
+                editBtn.textContent = "Save";
+                editing = true;
+            } else {
+                editableTexts.forEach(text => {
+                    text.contentEditable = "false";
+                    text.style.border = "none";
+                });
+                editBtn.textContent = "Edit";
+                editing = false;
+            }
+        });
+    </script>
 </body>
 </html>
