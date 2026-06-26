@@ -48,9 +48,13 @@ async function getBotResponse(userInput) {
             },
             body: JSON.stringify({ message: userInput })
         });
-
+        
+        if (!response.ok) {
+            return "Server error. Please try again.";
+        }
+        
         const data = await response.json();
-        return data.reply
+        return data.reply;
     } catch (error) {
         // console.error("Error fetching bot response:", error);
         return "Sorry, I couldn't connect to AI right now. Please try again.";
