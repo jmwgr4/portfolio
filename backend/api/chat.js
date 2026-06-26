@@ -5,16 +5,20 @@ export const config = {
 };
 
 export default async function handler(req, res) {
-    if (req.method !== "POST") {
-        return res.status(405).json({ error: "Method Not Allowed" });
-    }
-
     try {
+        console.log("🔥 API HIT");
+
+        console.log("METHOD:", req.method);
+        console.log("BODY:", req.body);
+
         const { message } = req.body || {};
 
         if (!message) {
-            return res.status(400).json({ reply: "No message provided" });
+            console.log("❌ No message received");
+            return res.status(400).json({ reply: "No message received" });
         }
+
+        console.log("📡 Calling Groq...");
 
         const response = await fetch(
             "https://api.groq.com/openai/v1/chat/completions",
@@ -26,40 +30,26 @@ export default async function handler(req, res) {
                 },
                 body: JSON.stringify({
                     model: "llama-3.1-8b-instant",
-                    temperature: 0.3,
                     messages: [
-                        {
-                            role: "system",
-                            content: "You are a helpful assistant for a portfolio website."
-                        },
-                        {
-                            role: "user",
-                            content: message
-                        }
+                        { role: "user", content: message }
                     ]
                 })
             }
         );
 
-        const data = await response.json();
+        const text = await response.text();
 
-        // ❗ LOG REAL ERROR (VERY IMPORTANT for debugging)
-        if (!response.ok) {
-            console.error("GROQ ERROR RESPONSE:", data);
-            return res.status(500).json({
-                reply: data?.error?.message || "Groq API error"
-            });
-        }
+        console.log("📩 RAW GROQ RESPONSE:", text);
 
         return res.status(200).json({
-            reply: data?.choices?.[0]?.message?.content || "No response from AI"
+            reply: text
         });
 
     } catch (err) {
-        console.error("SERVER CRASH:", err);
+        console.error("💥 SERVER ERROR:", err);
 
         return res.status(500).json({
-            reply: "Server error. Please try again later."
+            reply: err.message
         });
     }
 }
