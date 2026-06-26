@@ -256,9 +256,9 @@ instead of very long URLs.
 
     } catch (err) {
         console.error(err);
-
-        return res.status(500).json({
-            reply: "Sorry, I couldn't connect to AI right now."
+        res.status(500).json({ error: "Server error", details: err.message });
+        // return res.status(500).json({
+        //     reply: "Sorry, I couldn't connect to AI right now."
         });
     }
 }
