@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jun Mc Win - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'>
+    <path fill='black' d='M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm96 32h-40.6c-22.2 10.3-46.9 16-71.4 16s-49.2-5.7-71.4-16H96c-53 0-96 43-96 96v88c0 22.1 17.9 40 40 40h368c22.1 0 40-17.9 40-40v-88c0-53-43-96-96-96z'/>
+  </svg>" type="image/svg+xml">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>emailjs.init('FtHA_XZea9hiIcLGr');</script>
+    <title>Portfolio</title>
+</head>
+<body>
+    <div id="app"></div>
+    <!-- This canvas is for your main 3D scene -->
+    <canvas class="webgl"></canvas>
+    <input type="checkbox" id="dark-toggle">
+    <div class="page">
+        <header>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects" data-section="projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+            <label for="dark-toggle">🌙/☀️</label>
+        </header>
+
+        <div id="home">
+            <div class="home-container">
+                <div class="home-left">
+                    <div class="photo-wrapper">
+                        <img src="portfolio.png" alt="My Photo">
+                        <div class="photo-badge badge-1">
+                            <i class="fa-brands fa-python"></i>
+                        </div>
+                        <div class="photo-badge badge-2">
+                            <i class="fa-brands fa-js"></i>
+                        </div>
+                        <div class="photo-badge badge-3">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="photo-badge badge-4">
+                            <i class="fa-brands fa-github"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="home-right">
+                    <h4>Hi, I'm</h4>
+                    <canvas id="name-canvas"></canvas>
+                    <h3>Aspiring Computer Scientist</h2>
+                    <div class="cv">
+                        <a href="/cv.pdf" download><i class="fa-solid fa-download"></i> Download CV</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="about" class="about">
+            <h2>About Me</h2>
+            <p class="section-subtitle">Get to know me better</p>
+
+            <div class="about-wrapper">
+                <!-- Bio Left -->
+                <div class="about-bio">
+                    <p class="about-text">
+                        I'm <strong>Jun Mc Win G. Rollorata</strong>, a Computer Science 
+                        student at <strong>Caraga State University</strong>, passionate about building 
+                        things that live on the internet. I enjoy working on web development, game 
+                        development, and exploring AI and machine learning concepts.
+                    </p>
+                    <p class="about-text">
+                        When I'm not coding, you'll find me gaming or tinkering with creative projects. 
+                        I'm currently working on a research thesis involving robotic manipulation using 
+                        Vision-Language Models and Offline Reinforcement Learning.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">4th</span>
+                            <span class="stat-label">Year CS Student</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">4+</span>
+                            <span class="stat-label">Projects Built</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">CSU</span>
+                            <span class="stat-label">Caraga State University</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interests Right -->
+                <div class="about-interests">
+                    <div class="about-grid">
+                        <div class="about-box">
+                            <i class="fa-solid fa-gamepad"></i>
+                            <h3>Gaming & Game Dev</h3>
+                        </div>
+                        <div class="about-box">
+                            <i class="fa-solid fa-code"></i>
+                            <h3>Web & Software Dev</h3>
+                        </div>
+                        <div class="about-box">
+                            <i class="fa-solid fa-puzzle-piece"></i>
+                            <h3>Algorithms & Logic</h3>
+                        </div>
+                        <div class="about-box">
+                            <i class="fa-solid fa-database"></i>
+                            <h3>SQL & Data Systems</h3>
+                        </div>
+                        <div class="about-box">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <h3>Network Security</h3>
+                        </div>
+                        <div class="about-box">
+                            <i class="fa-solid fa-people-group"></i>
+                            <h3>Collaborative Projects</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Currently Working On -->
+            <div class="currently-on">
+                <i class="fa-solid fa-flask"></i>
+                <span><strong>Currently working on:</strong> Robotic manipulation using Vision-Language Models + Offline Reinforcement Learning</span>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <h2>My Skills</h2>
+            <div class="skills-row">
+               
+                <div class="planet">
+                    <div class="planet-body"><img src="assets/logo/html.png" alt="HTML"></div>
+                    <span class="planet-name">HTML</span>
+                </div>
+                <div class="planet">
+                    <div class="planet-body"><img src="assets/logo/css.png" alt="CSS"></div>
+                    <span class="planet-name">CSS</span>
+                </div>
+                <div class="planet">
+                    <div class="planet-body"><img src="assets/logo/js.png" alt="JavaScript"></div>
+                    <span class="planet-name">JavaScript</span>
+                </div>
+                <div class="planet">
+                    <div class="planet-body"><img src="assets/logo/c.png" alt="C"></div>
+                    <span class="planet-name">C</span>
+                </div>
+                <div class="planet">
+                    <div class="planet-body"><img src="assets/logo/php.png" alt="PHP"></div>
+                    <span class="planet-name">PHP</span>
+                </div>
+                 <div class="planet">
+                    <div class="planet-body"><img src="assets/logo/python.png" alt="Python"></div>
+                    <span class="planet-name">Python</span>
+                </div>
+                <div class="planet">
+                    <div class="planet-body"><img src="assets/logo/xampp.png" alt="XAMPP"></div>
+                    <span class="planet-name">XAMPP</span>
+                </div>
+                <div class="planet">
+                    <div class="planet-body"><img src="assets/logo/virtualbox.png" alt="VirtualBox"></div>
+                    <span class="planet-name">VirtualBox</span>
+                </div>
+                <div class="planet">
+                    <div class="planet-body"><img src="assets/logo/git.png" alt="Git"></div>
+                    <span class="planet-name">Git</span>
+                </div>
+                
+                <div class="planet">
+                    <div class="planet-body">
+                        <img src="assets/logo/canva-logo.png" alt="Canva">   
+                    </div>
+                    <span class="planet-name">Canva</span>    
+                </div>
+                <div class="planet">
+                    <div class="planet-body">
+                       <img src="assets/logo/figma.png" alt="Figma">
+                    </div>
+                    <span class="planet-name">Figma</span>
+                </div>
+                <div class="planet">
+                    <div class="planet-body">
+                        <img src="assets/logo/capcut.png" alt="Capcut">
+                    </div>
+                    <span class="planet-name">Capcut</span>
+                </div>
+            </div>
+            
+        </section>
+
+        <section id="projects" class="projects">
+        <h2>My Projects</h2>
+        <p class="projects-subtitle">Things I've built so far</p>
+        <div class="projects-grid">
+
+            <div class="project-card" data-title="Membership Management System"
+                data-desc="A full-stack web application for managing student memberships and registrations. Built with PHP, MySQL, and XAMPP. Features include member registration, attendance tracking, email notification and admin dashboard."
+                data-tech="PHP · MySQL · HTML · CSS · JavaScript · XAMPP"
+                data-link="https://github.com/jmwgr4/rsm_membership_system"
+                data-link-label="View on GitHub">
+                <div class="project-img-wrap">
+                    <img src="assets/projects/rsm.png" alt="Membership Management System">
+                    <div class="project-overlay">
+                        <button class="project-view-btn">View Details</button>
+                        <a class="project-link-btn" href="https://github.com/jmwgr4/rsm_membership_system" target="_blank">
+                            <i class="fa-brands fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card-footer">
+                    <h3>Membership Management System</h3>
+                    <div class="project-tags">
+                        <span>PHP</span><span>MySQL</span><span>XAMPP</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-title="Portfolio Website"
+                data-desc="A personal portfolio website built using HTML, CSS, and JavaScript. Features include a chatbot assistant powered by Gemini API, 3D animations via Three.js, a conveyor-belt skills section, smooth scroll navigation, dark mode, and EmailJS contact form."
+                data-tech="HTML · CSS · JavaScript · Three.js · Gemini API · EmailJS"
+                data-link="https://github.com/jmwgr4"
+                data-link-label="View on GitHub">
+                <div class="project-img-wrap">
+                    <img src="assets/projects/portfolio.png" alt="Portfolio Website">
+                    <div class="project-overlay">
+                        <button class="project-view-btn">View Details</button>
+                        <a class="project-link-btn" href="https://github.com/jmwgr4" target="_blank">
+                            <i class="fa-brands fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card-footer">
+                    <h3>Portfolio Website</h3>
+                    <div class="project-tags">
+                        <span>HTML</span><span>CSS</span><span>JS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-title="Hashiwokakero"
+                data-desc="A fully playable Hashiwokakero (Bridges) puzzle game implemented in JavaScript. Features include multiple difficulty levels, a leaderboard system, drag-to-draw bridges, AI solver, timer, and animated win screen."
+                data-tech="HTML · CSS · JavaScript"
+                data-link="https://github.com/jmwgr4/hashiwokakero"
+                data-link-label="View on GitHub"
+                data-site="https://hashiwokakero.vercel.app/"
+                >
+                <div class="project-img-wrap">
+                    <img src="assets/projects/hashi.png" alt="Hashiwokakero">
+                    <div class="project-overlay">
+                        <button class="project-view-btn">View Details</button>
+                        <a class="project-link-btn" href="https://github.com/jmwgr4/hashiwokakero" target="_blank">
+                            <i class="fa-brands fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card-footer">
+                    <h3>Hashiwokakero</h3>
+                    <div class="project-tags">
+                        <span>HTML</span><span>CSS</span><span>JS</span>
+                    </div>
+                </div>
+            </div>
+
+                <div class="project-card" data-title="Training Ground Simulator"
+                    data-desc="An immersive 3D first-person shooting range simulator built with Three.js and WebGL. Navigate through a professional training facility, hit all targets within a 5-minute time limit while mastering advanced weapon mechanics. Features a first-person controller with WASD movement and mouse look, physics system with collision detection and jump mechanics, a pistol weapon system with reload/scope/zoom, raycasting for accurate bullet trajectory and hit detection, and 3D positional audio. Built with a modular architecture of 6 core modules: core, environment, character, weapon, shooting, and input."
+                    data-tech="Three.js · WebGL · JavaScript · HTML · CSS · 3D Models (GLB) · Web Audio API"
+                    data-site="https://final-projectt-five.vercel.app/"
+                    data-link-label="Play Game">
+                    <div class="project-img-wrap">
+                        <img src="assets/projects/trainingsim.png" alt="Training Ground Simulator">
+                        <div class="project-overlay">
+                            <button class="project-view-btn">View Details</button>
+                            <a class="project-link-btn" href="https://final-projectt-five.vercel.app/" target="_blank">
+                                <i class="fa-solid fa-play"></i> Play
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <h3>Training Ground Simulator</h3>
+                        <div class="project-tags">
+                            <span>Three.js</span><span>WebGL</span><span>JavaScript</span><span>3D</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Modal -->
+        <div id="project-modal" class="project-modal">
+            <div class="project-modal-content">
+                <button class="project-modal-close" id="modal-close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="project-modal-img-wrap">
+                    <img id="modal-img" src="" alt="">
+                </div>
+                <div class="project-modal-body">
+                    <h2 id="modal-title"></h2>
+                    <p class="modal-tech" id="modal-tech"></p>
+                    <p class="modal-desc" id="modal-desc"></p>
+                    <a id="modal-link" href="#" target="_blank" class="modal-cta">
+                        <i class="fa-brands fa-github"></i>
+                        <span id="modal-link-label">View Project</span>
+                    </a>
+                    <a href="#" id="modal-site" target="_blank" class="modal-cta modal-play" style="display: none;">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Play</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <section id="education" class="education">
+            <h2>Education</h2>
+            <div class="education-grid">
+                <div class="education-box">
+                    <h3>High School</h3>
+                    <p>Graduated from Taligaman National High School in 2023.</p>
+                </div>
+                <div class="education-box">
+                    <h3>College</h3>
+                    <p>Currently pursuing a Bachelor's degree in Computer Science at Caraga State University.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="contact-wrapper">
+                <div class="contact-left">
+                    <h2>Get in Touch</h2>
+                    <p class="contact-subtitle">Have a question or want to work together? Send me a message.</p>
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="from-name">Name</label>
+                            <input type="text" id="from-name" name="from_name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="from-email">Email</label>
+                            <input type="email" id="from-email" name="from_email" placeholder="Your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
+                        </div>
+                        <button type="submit" class="contact-submit" id="submit-btn">
+                            <i class="fa-solid fa-paper-plane"></i> Send Message
+                        </button>
+                        <p id="form-status" class="form-status"></p>
+                    </form>
+                </div>
+
+                <div class="contact-right">
+                    <div class="contact-info-cards">
+                        <a href="mailto:junmcwinrollorata4@gmail.com" class="contact-card">
+                            <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="contact-card-text">
+                                <span class="contact-card-label">Email</span>
+                                <span class="contact-card-value">junmcwinrollorata4@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="tel:+639666497233" class="contact-card">
+                            <div class="contact-card-icon"><i class="fa-solid fa-phone"></i></div>
+                            <div class="contact-card-text">
+                                <span class="contact-card-label">Phone</span>
+                                <span class="contact-card-value">+63 966 649 7233</span>
+                            </div>
+                        </a>
+                        <div class="contact-card no-link">
+                            <div class="contact-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="contact-card-text">
+                                <span class="contact-card-label">Location</span>
+                                <span class="contact-card-value">Butuan City, Philippines</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="follow-section">
+                        <h3>Follow Me</h3>
+                        <div class="social-buttons">
+                            <a href="https://github.com/jmwgr4" target="_blank" class="social-btn github">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <a href="https://www.facebook.com/junmcwin.rollorata.9" target="_blank" class="social-btn facebook">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/moonlight15500160?igsh=MWl2djR1eXJ5Mm4wYg%3D%3D" target="_blank" class="social-btn instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <footer>
+            <div class="footer-inner">
+                <p class="footer-name">Jun Mc Win G. Rollorata</p>
+                <p class="footer-copy">© 2025 · Built with HTML, CSS, JS & Three.js</p>
+                <div class="footer-socials">
+                    <a href="https://github.com/jmwgr4" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.facebook.com/junmcwin.rollorata.9" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/moonlight15500160" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </footer>
+
+        <div id="chat-bubble" class="chat-bubble">💬</div> 
+        <div id="chat-window" class="chat-window" style="display: none;">
+            <div id="chat-header">
+                <h3><canvas id="bot-icon"></canvas>Jun Mc Win's Assistant</h3>
+                <button id="close-chat">✕</button>
+            </div>
+            <div id="chat-messages" class="chat-messages"></div>
+            <div id="chat-input" class="chat-input">
+                <input type="text" id="message-input" placeholder="Ask me anything...">
+                <button id="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="chatbot.js"></script>
+    <script src="projects.js"></script>
+    <!-- This script loads your 3D rendering logic, resolving the /main.js error -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/examples/jsm/loaders/FontLoader.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/FontLoader.js",
+            "three/examples/jsm/geometries/TextGeometry.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/geometries/TextGeometry.js",
+            "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.0/index.js",
+            "lil-gui": "https://cdn.jsdelivr.net/npm/lil-gui@0.19.0/dist/lil-gui.esm.js"
+        }
+    }
+    </script>
+    <script type="module" src="threed.js"></script>
+</body>
+</html>
