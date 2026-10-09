@@ -17,7 +17,7 @@ export default async function handler(req, res) {
         }
 
         const response = await fetch(
-            "https://api.groq.com/openai/v1/chat/completions",
+                "https://api.groq.com/openai/v1/chat/completions",
             {
                 method: "POST",
                 headers: {
