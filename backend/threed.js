@@ -31,19 +31,33 @@ if (darkToggle){
 const nameCanvas = document.querySelector('#name-canvas');
 let nameScene, nameCamera, nameRenderer;
 
+let nameTextWidth = 0;      // set once the text geometry exists
+const NAME_FIT = 0.92;      // name may fill at most 92% of the canvas width
+
 const updateNameCanvasSize = () => {
     if (!nameCanvas || !nameRenderer) return;
     const width = nameCanvas.clientWidth;
     const height = nameCanvas.clientHeight;
-    nameRenderer.setSize(width, height, false);
+    if (!width || !height) return;
+
     nameRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    nameRenderer.setSize(width, height, false);
     nameCamera.aspect = width / height;
+
+    // Pull the camera back until the whole name fits, so narrow phones never clip it
+    let z = 2.5;
+    if (nameTextWidth) {
+        const halfFov = THREE.MathUtils.degToRad(nameCamera.fov / 2);
+        const needed = (nameTextWidth / NAME_FIT) / (2 * Math.tan(halfFov) * nameCamera.aspect);
+        z = Math.max(z, needed);
+    }
+    nameCamera.position.z = z;
     nameCamera.updateProjectionMatrix();
 };
 
 if (nameCanvas) {
     nameScene = new THREE.Scene();
-    nameCamera = new THREE.PerspectiveCamera(35, 1, 0.1, 10);
+    nameCamera = new THREE.PerspectiveCamera(35, 1, 0.1, 50);
     nameCamera.position.z = 2.5;
 
     nameRenderer = new THREE.WebGLRenderer({
@@ -70,11 +84,14 @@ if (nameCanvas) {
             bevelSegments: 5
         });
         textGeometry.center();
+        textGeometry.computeBoundingBox();
+        nameTextWidth = textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x;
 
         const text = new THREE.Mesh(textGeometry, nameMaterial);
         nameScene.add(text);
 
         updateNameColor();
+        updateNameCanvasSize();   // re-fit now that the text width is known
     });
 } else {
     console.error("Could not find canvas with ID #name-canvas");
@@ -135,7 +152,9 @@ botScene.add(botMesh);
 function animateBot() {
     botMesh.rotation.x += 0.01;
     botMesh.rotation.y += 0.01;
-    botRenderer.render(botScene, botCamera);
+    if (botCanvas.offsetParent !== null) {   // null while the chat window is display:none
+        botRenderer.render(botScene, botCamera);
+    }
     requestAnimationFrame(animateBot);
 }
 
@@ -200,6 +219,12 @@ window.addEventListener('scroll', () => {
 });
 
 window.addEventListener('resize', () => {
+    // On phones the address bar showing/hiding only changes the height.
+    // Ignore shrinking height-only changes so the canvas doesn't resize on every scroll.
+    const isTouch = window.matchMedia('(hover: none)').matches;
+    const widthChanged = window.innerWidth !== sizes.width;
+    if (isTouch && !widthChanged && window.innerHeight <= sizes.height) return;
+
     sizes.width = window.innerWidth;
     sizes.height = window.innerHeight;  
 
