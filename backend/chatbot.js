@@ -34,7 +34,8 @@ async function sendMessage() {
 function displayMessage(message, sender) {
     const messageDiv = document.createElement("div");
     messageDiv.className = `chat-message ${sender}-message`;
-    messageDiv.innerHTML = message;
+    if (sender === "user") messageDiv.textContent = message;
+    else messageDiv.innerHTML = message; // bot replies contain <a> links
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
@@ -48,9 +49,13 @@ async function getBotResponse(userInput) {
             },
             body: JSON.stringify({ message: userInput })
         });
-
+        
+        if (!response.ok) {
+            return "Server error. Please try again.";
+        }
+        
         const data = await response.json();
-        return data.reply
+        return data.reply;
     } catch (error) {
         // console.error("Error fetching bot response:", error);
         return "Sorry, I couldn't connect to AI right now. Please try again.";

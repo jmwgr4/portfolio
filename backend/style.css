@@ -226,6 +226,9 @@ header a {
     font-weight: bold;
 }
 
+header i {
+    padding: 10px;
+}
 #home {
     display: flex;
     justify-content: center;
@@ -1597,3 +1600,461 @@ header a.active-nav {
 #dark-toggle:checked ~ .page .home-left::before {
     background: linear-gradient(135deg, rgba(255,204,0,0.1), rgba(255,204,0,0.03));
 }
+/* ---------- Desktop defaults for the icon-only mobile nav ---------- */
+header a > i, .toggle-icons { display: none; }
+
+/* ---------- Project groups (Coding / Figma / Canva) ---------- */
+.project-group { width: 100%; max-width: 1000px; margin-top: 56px; text-align: left; }
+.projects-subtitle + .project-group { margin-top: 8px; }
+.project-group-head {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 24px; padding-bottom: 16px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+}
+.group-icon {
+    width: 46px; height: 46px; flex-shrink: 0; display: grid; place-items: center;
+    border-radius: 12px; font-size: 21px; color: #0078d4; background: #e8f0fe;
+}
+.project-group-head h3 { font-size: 20px; font-weight: 700; line-height: 1.2; }
+.project-group-head p { font-size: 13px; color: #888; margin-top: 2px; }
+.project-empty {
+    grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; gap: 10px;
+    padding: 40px 20px; border: 2px dashed rgba(128, 128, 128, 0.4); border-radius: 14px;
+    color: #888; text-align: center; font-size: 14px;
+}
+.project-empty i { font-size: 30px; color: #0078d4; }
+.project-modal-img-wrap img[style*="contain"] { background: #f1f5fb; }
+#dark-toggle:checked ~ .page .group-icon { background: #2a2a2a; color: #ffcc00; }
+#dark-toggle:checked ~ .page .project-empty i { color: #ffcc00; }
+#dark-toggle:checked ~ .page .project-group-head p,
+#dark-toggle:checked ~ .page .project-empty { color: #aaa; }
+
+/* ================= MOBILE LAYER (keep at the very bottom) ================= */
+
+:root { --header-h: 56px; }
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 100vw includes the scrollbar width and causes sideways overflow */
+header { width: 100%; }
+
+@media (max-width: 768px) {
+
+    /* ---------- Header: icon-only bar (dark icons on light, light icons on dark) ---------- */
+    header {
+        --nav-icon: #1f2937;
+        --nav-pill: rgba(0, 120, 212, 0.14);
+        height: var(--header-h);
+        padding: 0 8px;
+        gap: 2px;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        overflow: visible;
+        background: rgba(255, 255, 255, 0.92);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    #dark-toggle:checked ~ .page header {
+        --nav-icon: #f3f4f6;
+        --nav-pill: rgba(255, 204, 0, 0.18);
+        background: rgba(18, 18, 18, 0.92);
+        border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+
+    header a,
+    header a.active-nav,
+    #dark-toggle:checked ~ .page header a,
+    #dark-toggle:checked ~ .page header a.active-nav,
+    label[for="dark-toggle"],
+    #dark-toggle:checked ~ .page label[for="dark-toggle"] { color: var(--nav-icon); }
+
+    header a {
+        flex: 1;
+        min-width: 0;
+        height: 44px;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        border-bottom: 0;
+        font-size: 19px;
+        transition: background 0.25s;
+    }
+
+    header a > i { display: block; }
+    header a .nav-text { display: none; }
+
+    header a.active-nav,
+    #dark-toggle:checked ~ .page header a.active-nav {
+        padding: 0;
+        border-bottom: 0;
+        background: var(--nav-pill);
+    }
+
+    label[for="dark-toggle"],
+    #dark-toggle:checked ~ .page label[for="dark-toggle"] {
+        flex: 0 0 44px;
+        width: 44px;
+        height: 44px;
+        margin: 0 0 0 4px;
+        padding: 0;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(128, 128, 128, 0.16);
+        font-size: 19px;
+    }
+
+    .toggle-emoji { display: none; }
+    header .toggle-icons { display: block; position: relative; width: 1em; height: 1em; }
+    .toggle-icons i {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+    }
+    .icon-moon { opacity: 1; transform: rotate(0) scale(1); }
+    .icon-sun  { opacity: 0; transform: rotate(-90deg) scale(0.4); }
+    #dark-toggle:checked ~ .page .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.4); }
+    #dark-toggle:checked ~ .page .icon-sun  { opacity: 1; transform: rotate(0) scale(1); }
+
+    /* ---------- Sections: same rhythm everywhere ---------- */
+    #home {
+        min-height: 100vh;
+        min-height: 100svh;
+        padding-top: var(--header-h);
+        scroll-margin-top: var(--header-h);
+    }
+
+    #about, #skills, #projects, #education, #contact {
+        min-height: 0;
+        padding: 56px 16px;
+        scroll-margin-top: var(--header-h);
+    }
+
+    .about h2, .skills h2, .projects h2,
+    .education h2, .contact h2, .contact-left h2 {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    .section-subtitle,
+    .projects-subtitle {
+        font-size: 13px;
+        margin: 12px 0 28px;
+    }
+
+    /* ---------- Home ---------- */
+    .home-container {
+        flex-direction: column;
+        width: 100%;
+        padding: 16px;
+        gap: 28px;
+    }
+
+    .home-left { width: 100%; }
+
+    .home-left::before,
+    .home-left::after { display: none; }
+
+    .photo-wrapper {
+        --photo: clamp(190px, 60vw, 260px);
+        width: var(--photo);
+        height: var(--photo);
+        margin: 22px 20px;
+    }
+
+    .home-left .photo-wrapper img {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+    }
+
+    .photo-wrapper::before {
+        top: -14px;
+        left: -14px;
+        width: calc(100% + 28px);
+        height: calc(100% + 28px);
+    }
+
+    .photo-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 17px;
+    }
+
+    .home-right { flex: none; width: 100%; }
+    .home-right h4 { font-size: 14px; letter-spacing: 1.5px; }
+    .home-right h3 { font-size: 17px; }
+    .cv { margin-top: 20px; }
+
+    /* ---------- About ---------- */
+    .about-wrapper {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+    }
+
+    .about-text { font-size: 14px; line-height: 1.75; }
+
+    .about-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .stat-item { padding: 12px 10px; min-width: 0; }
+    .stat-number { font-size: 20px; }
+    .stat-label { font-size: 10.5px; line-height: 1.3; }
+
+    .about-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .about-box {
+        flex-direction: column;
+        text-align: center;
+        padding: 16px 10px;
+        gap: 10px;
+    }
+
+    .about-box h3 { font-size: 12.5px; line-height: 1.3; }
+
+    .currently-on {
+        margin-top: 28px;
+        padding: 14px 16px;
+        font-size: 13px;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    /* ---------- Skills (size only; animation untouched) ---------- */
+    .skills-row { gap: 16px; }
+    .planet { gap: 8px; }
+
+    .planet-body {
+        width: 96px;
+        height: 96px;
+        margin-top: 12px;
+        border-width: 2px;
+        border-radius: 14px;
+    }
+
+    .planet-body img { width: 52px; height: 52px; }
+    .planet-name { font-size: 12px; }
+
+    /* ---------- Projects ---------- */
+    .projects-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .project-card-footer { padding: 14px 16px; }
+
+    /* ---------- Project modal ---------- */
+    .project-modal { padding: 12px; }
+
+    .project-modal-content {
+        max-height: 90vh;
+        max-height: 90dvh;
+        border-radius: 14px;
+    }
+
+    .project-modal-close {
+        width: 40px;
+        height: 40px;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+    }
+
+    .project-modal-body { padding: 20px 18px 22px; }
+    .project-modal-body h2 { font-size: 19px; }
+    .modal-tech { font-size: 12px; }
+    .modal-desc { font-size: 13.5px; margin-bottom: 20px; }
+
+    .modal-cta {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        padding: 12px 16px;
+    }
+
+    .modal-play { margin: 10px 0 0; }
+
+    /* ---------- Education ---------- */
+    .education-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+        margin-top: 12px;
+    }
+
+    .education-box { padding: 22px 18px; }
+
+    /* ---------- Contact ---------- */
+    .contact-wrapper {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 36px;
+    }
+
+    .contact-left { text-align: center; }
+    .contact-form { text-align: left; }
+    .contact-subtitle { font-size: 14px; margin-bottom: 24px; }
+
+    /* 16px stops iOS Safari from zooming on focus */
+    .form-group input,
+    .form-group textarea,
+    #message-input { font-size: 16px; }
+
+    .contact-card { padding: 14px 16px; gap: 12px; }
+    .contact-card-icon { width: 40px; height: 40px; font-size: 18px; }
+    .contact-card-text { min-width: 0; }
+    .contact-card-value { overflow-wrap: anywhere; }
+
+    .follow-section { text-align: center; }
+    .social-buttons { justify-content: center; }
+
+    /* ---------- Chatbot ---------- */
+    #chat-bubble {
+        width: 52px;
+        height: 52px;
+        font-size: 26px;
+        right: 16px;
+        bottom: 16px;
+    }
+
+    #chat-window {
+        left: 12px;
+        right: 12px;
+        bottom: 80px;
+        width: auto;
+        max-width: none;
+        height: min(70vh, 520px);
+        height: min(70dvh, 520px);
+        max-height: calc(100vh - var(--header-h) - 100px);
+        max-height: calc(100dvh - var(--header-h) - 100px);
+    }
+
+    #chat-header h3 { font-size: 15px; }
+    #message-input { min-width: 0; }
+    .user-message, .bot-message { max-width: 88%; }
+
+    /* ---------- Footer ---------- */
+    footer { padding: 28px 16px; }
+}
+
+/* ---------- Touch screens: no sticky hover, buttons always reachable ---------- */
+@media (hover: none) {
+    .project-card:hover,
+    .about-box:hover,
+    .contact-card:hover,
+    .education-box:hover,
+    .planet-body:hover,
+    .cv a:hover,
+    .social-btn:hover,
+    .home-left .photo-wrapper img:hover { transform: none; }
+
+    .project-card:hover .project-img-wrap img { transform: none; }
+
+    .project-overlay {
+        opacity: 1;
+        backdrop-filter: none;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0) 60%);
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: center;
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .project-view-btn { padding: 8px 16px; font-size: 13px; }
+    .project-link-btn { padding: 7px 12px; font-size: 12px; background: rgba(0, 0, 0, 0.35); }
+}
+
+/* ---------- Small phones (320-360px) ---------- */
+@media (max-width: 360px) {
+    .photo-wrapper { --photo: 180px; }
+    .about h2, .skills h2, .projects h2,
+    .education h2, .contact h2, .contact-left h2 { font-size: 25px; }
+    .stat-label { font-size: 10px; }
+    .about-box h3 { font-size: 12px; }
+}
+
+@media (max-width: 768px) {
+    .project-group { margin-top: 40px; }
+    .project-group-head h3 { font-size: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .toggle-icons i { transition: none; }
+    .photo-badge,
+    .photo-wrapper::before { animation: none; }
+}
+
+/* ===== Desktop: same light/dark header + sun/moon toggle as mobile ===== */
+@media (min-width: 769px) {
+    header {
+        --nav-icon: #1f2937;
+        background: rgba(255, 255, 255, 0.92);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    #dark-toggle:checked ~ .page header {
+        --nav-icon: #f3f4f6;
+        background: rgba(18, 18, 18, 0.92);
+        border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+
+    header a,
+    #dark-toggle:checked ~ .page header a {
+        color: var(--nav-icon);
+    }
+
+    label[for="dark-toggle"],
+    #dark-toggle:checked ~ .page label[for="dark-toggle"] {
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border-radius: 50%;
+        background: rgba(128, 128, 128, 0.16);
+        color: var(--nav-icon);
+        font-size: 18px;
+    }
+
+    .toggle-emoji { display: none; }
+    header .toggle-icons { display: block; position: relative; width: 1em; height: 1em; }
+
+    .toggle-icons i {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+    }
+
+    .icon-moon { opacity: 1; transform: rotate(0) scale(1); }
+    .icon-sun  { opacity: 0; transform: rotate(-90deg) scale(0.4); }
+    #dark-toggle:checked ~ .page .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.4); }
+    #dark-toggle:checked ~ .page .icon-sun  { opacity: 1; transform: rotate(0) scale(1); }
+}
+
+.group-icon img { width: 26px; height: 26px; object-fit: contain; }
+.project-empty img { width: 34px; height: 34px; object-fit: contain; }
+.project-link-btn img { object-fit: contain; }

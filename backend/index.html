@@ -7,10 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="icon" href="data:image/svg+xml,
-  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'>
-    <path fill='black' d='M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm96 32h-40.6c-22.2 10.3-46.9 16-71.4 16s-49.2-5.7-71.4-16H96c-53 0-96 43-96 96v88c0 22.1 17.9 40 40 40h368c22.1 0 40-17.9 40-40v-88c0-53-43-96-96-96z'/>
-  </svg>" type="image/svg+xml">
+    <link rel="icon" href="assets/user.png">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>emailjs.init('FtHA_XZea9hiIcLGr');</script>
     <title>Portfolio</title>
@@ -22,13 +19,16 @@
     <input type="checkbox" id="dark-toggle">
     <div class="page">
         <header>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects" data-section="projects">Projects</a>
-            <a href="#education">Education</a>
-            <a href="#contact">Contact</a>
-            <label for="dark-toggle">🌙/☀️</label>
+            <a href="#home" aria-label="Home" title="Home"><i class="fa-solid fa-house"></i><span class="nav-text">Home</span></a>
+            <a href="#about" aria-label="About" title="About"><i class="fa-solid fa-user"></i><span class="nav-text">About</span></a>
+            <a href="#skills" aria-label="Skills" title="Skills"><i class="fa-solid fa-laptop-code"></i><span class="nav-text">Skills</span></a>
+            <a href="#projects" aria-label="Projects" title="Projects"><i class="fa-solid fa-diagram-project"></i><span class="nav-text">Projects</span></a>
+            <a href="#education" aria-label="Education" title="Education"><i class="fa-solid fa-graduation-cap"></i><span class="nav-text">Education</span></a>
+            <a href="#contact" aria-label="Contact" title="Contact"><i class="fa-solid fa-envelope"></i><span class="nav-text">Contact</span></a>
+            <label for="dark-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                <span class="toggle-emoji">🌙/☀️</span>
+                <span class="toggle-icons"><i class="fa-solid fa-moon icon-moon"></i><i class="fa-solid fa-sun icon-sun"></i></span>
+            </label>
         </header>
 
         <div id="home">
@@ -53,7 +53,7 @@
                 <div class="home-right">
                     <h4>Hi, I'm</h4>
                     <canvas id="name-canvas"></canvas>
-                    <h3>Aspiring Computer Scientist</h2>
+                    <h3>Aspiring Computer Scientist</h3>
                     <div class="cv">
                         <a href="/cv.pdf" download><i class="fa-solid fa-download"></i> Download CV</a>
                     </div>
@@ -199,7 +199,12 @@
         <section id="projects" class="projects">
         <h2>My Projects</h2>
         <p class="projects-subtitle">Things I've built so far</p>
-        <div class="projects-grid">
+                <div class="project-group" id="coding-projects">
+            <div class="project-group-head">
+                <span class="group-icon"><i class="fa-solid fa-code"></i></span>
+                <div><h3>Coding projects</h3><p>Web apps, games and systems</p></div>
+            </div>
+            <div class="projects-grid">
 
             <div class="project-card" data-title="Membership Management System"
                 data-desc="A full-stack web application for managing student memberships and registrations. Built with PHP, MySQL, and XAMPP. Features include member registration, attendance tracking, email notification and admin dashboard."
@@ -291,6 +296,67 @@
                     </div>
                 </div>
             </div>
+                </div>
+        <div class="project-group" id="figma-designs">
+            <div class="project-group-head">
+                <span class="group-icon"><i class="fa-brands fa-figma"></i></span>
+                <div><h3>Figma designs</h3><p>UI and UX mockups, prototypes</p></div>
+            </div>
+            <div class="projects-grid">
+                <!-- To add a design: copy this card, edit it, then delete the "coming soon" box below.
+                <div class="project-card" data-title="Design title"
+                    data-desc="What it is, who it was for, what you did."
+                    data-tech="Figma · Design"
+                    data-link="https://link-to-your-figma-file"
+                    data-link-label="Open in Figma"
+                    data-link-icon="fa-brands fa-figma"
+                    data-fit="contain">
+                    <div class="project-img-wrap">
+                        <img src="assets/designs/figma-1.png" alt="Design title">
+                        <div class="project-overlay">
+                            <button class="project-view-btn">View Details</button>
+                            <a class="project-link-btn" href="https://link-to-your-figma-file" target="_blank" rel="noopener"><i class="fa-brands fa-figma"></i> Figma</a>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <h3>Design title</h3>
+                        <div class="project-tags"><span>Figma</span></div>
+                    </div>
+                </div>
+                -->
+                <div class="project-empty"><i class="fa-brands fa-figma"></i><p>Figma designs coming soon</p></div>
+            </div>
+        </div>
+        <div class="project-group" id="canva-designs">
+            <div class="project-group-head">
+                <span class="group-icon"><img src="assets/logo/canva-logo.png" alt="Canva"></span>
+                <div><h3>Canva designs</h3><p>Posters, social media and presentation designs</p></div>
+            </div>
+            <div class="projects-grid">
+                <!-- To add a design: copy this card, edit it, then delete the "coming soon" box below.
+                <div class="project-card" data-title="Design title"
+                    data-desc="What it is, who it was for, what you did."
+                    data-tech="Canva · Design"
+                    data-link="https://link-to-your-canva-file"
+                    data-link-label="View on Canva"
+                    data-link-icon="fa-solid fa-arrow-up-right-from-square"
+                    data-fit="contain">
+                    <div class="project-img-wrap">
+                        <img src="assets/designs/canva-1.png" alt="Design title">
+                        <div class="project-overlay">
+                            <button class="project-view-btn">View Details</button>
+                            <a class="project-link-btn" href="https://link-to-your-canva-file" target="_blank" rel="noopener"><img src="assets/logo/canva-logo.png" alt="" width="16" height="16"> Canva</a>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <h3>Design title</h3>
+                        <div class="project-tags"><span>Canva</span></div>
+                    </div>
+                </div>
+                -->
+                <div class="project-empty"><img src="assets/logo/canva-logo.png" alt="Canva"><p>Canva designs coming soon</p></div>
+            </div>
+        </div>
         </section>
 
         <!-- Project Modal -->
@@ -307,7 +373,7 @@
                     <p class="modal-tech" id="modal-tech"></p>
                     <p class="modal-desc" id="modal-desc"></p>
                     <a id="modal-link" href="#" target="_blank" class="modal-cta">
-                        <i class="fa-brands fa-github"></i>
+                        <i id="modal-link-icon" class="fa-brands fa-github"></i>
                         <span id="modal-link-label">View Project</span>
                     </a>
                     <a href="#" id="modal-site" target="_blank" class="modal-cta modal-play" style="display: none;">
@@ -404,7 +470,7 @@
         <footer>
             <div class="footer-inner">
                 <p class="footer-name">Jun Mc Win G. Rollorata</p>
-                <p class="footer-copy">© 2025 · Built with HTML, CSS, JS & Three.js</p>
+                <p class="footer-copy">© 2026 · Built with HTML, CSS, JS & Three.js</p>
                 <div class="footer-socials">
                     <a href="https://github.com/jmwgr4" target="_blank"><i class="fa-brands fa-github"></i></a>
                     <a href="https://www.facebook.com/junmcwin.rollorata.9" target="_blank"><i class="fa-brands fa-facebook"></i></a>

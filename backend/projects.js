@@ -16,6 +16,7 @@ const modalTech = document.getElementById('modal-tech');
 const modalLink = document.getElementById('modal-link');
 const modalLinkLabel = document.getElementById('modal-link-label');
 const modalClose = document.getElementById('modal-close');
+const modalLinkIcon = document.getElementById('modal-link-icon');
 
 document.querySelectorAll('.project-view-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -33,10 +34,12 @@ document.querySelectorAll('.project-view-btn').forEach(btn => {
         modalTitle.textContent = card.dataset.title;
         modalDesc.textContent = card.dataset.desc;
         modalTech.textContent = card.dataset.tech;
+        modalImg.style.objectFit = card.dataset.fit || 'cover';
         // After - hides GitHub button if no link
         if (card.dataset.link) {
             modalLink.href = card.dataset.link;
             modalLinkLabel.textContent = card.dataset.linkLabel || 'View on GitHub';
+            modalLinkIcon.className = card.dataset.linkIcon || 'fa-brands fa-github';
             modalLink.style.display = 'inline-flex';
         } else {
             modalLink.style.display = 'none';
