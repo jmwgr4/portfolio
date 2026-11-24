@@ -226,6 +226,10 @@ header a {
     font-weight: bold;
 }
 
+header i {
+    padding: 10px;
+}
+
 #home {
     display: flex;
     justify-content: center;
