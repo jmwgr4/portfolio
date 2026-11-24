@@ -226,9 +226,6 @@ header a {
     font-weight: bold;
 }
 
-header i {
-    padding: 10px;
-}
 #home {
     display: flex;
     justify-content: center;
@@ -1731,43 +1728,6 @@ header { width: 100%; }
     #dark-toggle:checked ~ .page .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.4); }
     #dark-toggle:checked ~ .page .icon-sun  { opacity: 1; transform: rotate(0) scale(1); }
 
-    /* ---------- Header: one fixed-height row on every phone ---------- */
-    header {
-        height: var(--header-h);
-        padding: 0 12px;
-        gap: 4px;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-    header::-webkit-scrollbar { display: none; }
-
-    header a {
-        margin: 0;
-        padding: 10px 8px;
-        font-size: 13px;
-        white-space: nowrap;
-        flex-shrink: 0;
-    }
-
-    header a.active-nav {
-        padding-bottom: 10px;
-        border-bottom: 0;
-        box-shadow: inset 0 -2px 0 currentColor;
-    }
-
-    label[for="dark-toggle"] {
-        position: sticky;
-        right: 0;
-        margin-left: auto;
-        flex-shrink: 0;
-        white-space: nowrap;
-        padding: 8px 10px;
-    }
-
     /* ---------- Sections: same rhythm everywhere ---------- */
     #home {
         min-height: 100vh;
@@ -2022,7 +1982,6 @@ header { width: 100%; }
 
 /* ---------- Small phones (320-360px) ---------- */
 @media (max-width: 360px) {
-    header a { font-size: 12px; padding: 10px 6px; }
     .photo-wrapper { --photo: 180px; }
     .about h2, .skills h2, .projects h2,
     .education h2, .contact h2, .contact-left h2 { font-size: 25px; }
@@ -2040,7 +1999,6 @@ header { width: 100%; }
     .photo-badge,
     .photo-wrapper::before { animation: none; }
 }
-
 /* ===== Desktop: same light/dark header + sun/moon toggle as mobile ===== */
 @media (min-width: 769px) {
     header {
@@ -2096,7 +2054,3 @@ header { width: 100%; }
 .group-icon img { width: 26px; height: 26px; object-fit: contain; }
 .project-empty img { width: 34px; height: 34px; object-fit: contain; }
 .project-link-btn img { object-fit: contain; }
-@media (prefers-reduced-motion: reduce) {
-    .photo-badge,
-    .photo-wrapper::before { animation: none; }
-}
