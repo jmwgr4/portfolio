@@ -35,6 +35,17 @@ document.querySelectorAll('.project-view-btn').forEach(btn => {
         modalDesc.textContent = card.dataset.desc;
         modalTech.textContent = card.dataset.tech;
         modalImg.style.objectFit = card.dataset.fit || 'cover';
+        modal.classList.toggle('is-tall', card.dataset.scroll === 'true');
+        modal.classList.remove('fit-all');
+        document.querySelector('.project-modal-img-wrap').scrollTop = 0;
+        const modalFull = document.getElementById('modal-full');
+        if (card.dataset.scroll === 'true') {
+            modalFull.href = img.src;
+            modalFull.style.display = 'inline-flex';
+        } else {
+            modalFull.style.display = 'none';
+        }
+        modalImg.style.objectPosition = card.dataset.pos || 'center';
         // After - hides GitHub button if no link
         if (card.dataset.link) {
             modalLink.href = card.dataset.link;
@@ -250,4 +261,8 @@ window.addEventListener('scroll', () => {
             link.classList.add('active-nav');
         }
     });
+});
+
+document.querySelector('.project-modal-img-wrap').addEventListener('click', () => {
+    if (modal.classList.contains('is-tall')) modal.classList.toggle('fit-all');
 });
